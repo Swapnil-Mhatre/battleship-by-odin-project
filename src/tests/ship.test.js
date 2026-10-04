@@ -1,5 +1,5 @@
 import { describe, expect, it } from "@jest/globals";
-import { Ship } from "../modules/ship";
+import { Ship } from "../modules/ship.js";
 
 describe("Ships", function () {
   it("Should Throw error on Invalid length", function () {
