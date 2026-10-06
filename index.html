@@ -9,6 +9,88 @@
 </head>
 
 <body>
+    <div class="game-container">
+        <header>
+            <div class="left">
+                <span>Sea Seige</span>
+                <h2>BattleShip</h2>
+            </div>
+            <div class="right">
+                <i class="circle"></i> Operation Pacific
+            </div>
+        </header>
+        <main>
+            <section class="game-header">
+                <div class="game-menu">
+                    <div class="left-menu">
+                        <button id="randomize-btn">Randomize ships</button>
+                        <div class="direction-buttons">
+                            <button class="active" data-direction="horizontal">Horizontal</button>
+                            <button data-direction="vertical">Vertical</button>
+                        </div>
+                        <button id="reset-board">Reset Board</button>
+                    </div>
+                    <div class="right-menu">
+                        <button id="start-game">Start game</button>
+                    </div>
+                </div>
+                <div class="game-info">
+                    <span id="phase"><i class="circle"></i> deployment</span>
+                    <p>Deploy your ship's to begin operation</p>
+                    <div>
+                        <span class="active">Your turn</span>
+                        <span>Opponent</span>
+                    </div>
+                </div>
+            </section>
+            <section class="boards">
+                <div class="board player1-board">
+                    <div class="board-header">
+                        <div class="left">
+                            <h3>Friendly Waters</h3>
+                            <span>Deployment Zone</span>
+                        </div>
+                        <div class="right">
+                            <h4><span>0</span> sunk</h4>
+                            <h4><span>0</span> missed</h4>
+                        </div>
+                    </div>
+                    <div class="gameboard"></div>
+                    <div class="board-footer">
+                        <span>Your Fleet</span>
+                        <span>0 / 5 deployed</span>
+                    </div>
+                </div>
+                <div class="board player2-board">
+                    <div class="board-header">
+                        <div class="left">
+                            <h3>Enemy Waters</h3>
+                            <span>Awaiting Contact</span>
+                        </div>
+                        <div class="right">
+                            <h4><span>0</span> direct hits</h4>
+                            <h4><span>0</span> missed shots</h4>
+                        </div>
+                    </div>
+                    <div class="gameboard"></div>
+                    <div class="board-footer">
+                        <span>Opposition</span>
+                        <span>computer</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <div class="left">
+                <span><i class="square ship"></i> Your Ships</span>
+                <span><i class="square hit"></i> Direct Hit</span>
+                <span><i class="square miss"></i> Missed Shot</span>
+            </div>
+            <span>
+                Grid coordinates A-J / 1-10
+            </span>
+        </footer>
+    </div>
     <script src="./src/main.js"></script>
 </body>
 
