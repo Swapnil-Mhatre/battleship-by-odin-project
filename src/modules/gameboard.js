@@ -14,6 +14,7 @@ export class Gameboard {
         isMiss: false,
       })),
     );
+    this.missedAttacks = 0;
     this.ships = [];
   }
 
@@ -48,6 +49,7 @@ export class Gameboard {
       return "hit";
     }
 
+    this.missedAttacks += 1;
     cell.isMiss = true;
     return "miss";
   }

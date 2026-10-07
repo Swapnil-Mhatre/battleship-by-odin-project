@@ -1,7 +1,7 @@
 import { Player } from "./player.js";
 import { Ship } from "./ship.js";
 
-const SHIPS = [5, 4, 3, 3, 2];
+export const SHIPS = [5, 4, 3, 3, 2];
 
 export class GameController {
   constructor(playerOne, playerTwo) {
@@ -33,6 +33,7 @@ export class GameController {
       return {
         result: "game-over",
         attacker: this.currentPlayer,
+        opponent: this.opponent,
         coordinates,
         winner: this.winner,
       };
@@ -41,9 +42,9 @@ export class GameController {
     const attacker = this.currentPlayer;
     const opponent = this.opponent;
     const result = opponent.gameboard.recieveAttack(coordinates);
-    
+
     if (result === "already attacked") {
-      return { result, attacker, coordinates, winner: null };
+      return { result, attacker, opponent, coordinates, winner: null };
     }
 
     if (opponent.gameboard.isAllShipSunk()) {
@@ -53,7 +54,7 @@ export class GameController {
       this.currentPlayer = opponent;
     }
 
-    return { result, attacker, coordinates, winner: this.winner };
+    return { result, attacker, opponent, coordinates, winner: this.winner };
   }
 
   playComputerTurn() {
@@ -74,26 +75,24 @@ export class GameController {
     board.reset();
     const randomInt = (max) => Math.floor(random() * max);
 
-    shipLengths
-      .sort((a, b) => b - a)
-      .forEach((length) => {
-        let placed = false;
+    shipLengths.forEach((length) => {
+      let placed = false;
 
-        for (let attempt = 0; attempt < maxAttempts && !placed; attempt++) {
-          const direction = random() < 0.5 ? "horizontal" : "vertical";
-          const coords = [randomInt(board.size), randomInt(board.size)];
+      for (let attempt = 0; attempt < maxAttempts && !placed; attempt++) {
+        const direction = random() < 0.5 ? "horizontal" : "vertical";
+        const coords = [randomInt(board.size), randomInt(board.size)];
 
-          try {
-            board.placeShip(new Ship(length), coords, direction);
-            placed = true;
-          } catch (error) {
-            if (!(error instanceof RangeError)) throw error;
-          }
+        try {
+          board.placeShip(new Ship(length), coords, direction);
+          placed = true;
+        } catch (error) {
+          if (!(error instanceof RangeError)) throw error;
         }
+      }
 
-        if (!placed)
-          throw new Error(`Could not place a ship of length ${length}`);
-      });
+      if (!placed)
+        throw new Error(`Could not place a ship of length ${length}`);
+    });
   }
 
   reset() {

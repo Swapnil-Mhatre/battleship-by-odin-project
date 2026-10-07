@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sea Seige | BattleShip</title>
     <link rel="stylesheet" href="./src/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -22,7 +23,7 @@
         <main>
             <section class="game-header">
                 <div class="game-menu">
-                    <div class="left-menu">
+                    <div class="placement-tools" id="placement-tools" hidden>
                         <button id="randomize-btn">Randomize ships</button>
                         <div class="direction-buttons">
                             <button class="active" data-direction="horizontal">Horizontal</button>
@@ -32,11 +33,12 @@
                     </div>
                     <div class="right-menu">
                         <button id="start-game">Start game</button>
+                        <button hidden id="restart-game">Restart game</button>
                     </div>
                 </div>
                 <div class="game-info">
                     <span id="phase"><i class="circle"></i> deployment</span>
-                    <p>Deploy your ship's to begin operation</p>
+                    <p id="message">Deploy your ship's to begin operation</p>
                     <div>
                         <span class="active">Your turn</span>
                         <span>Opponent</span>
@@ -58,7 +60,7 @@
                     <div class="gameboard"></div>
                     <div class="board-footer">
                         <span>Your Fleet</span>
-                        <span>0 / 5 deployed</span>
+                        <span id="deployed-ship">0 / 5 deployed</span>
                     </div>
                 </div>
                 <div class="board player2-board">
@@ -91,7 +93,7 @@
             </span>
         </footer>
     </div>
-    <script src="./src/main.js"></script>
+    <script type="module" src="./src/main.js"></script>
 </body>
 
 </html>
