@@ -1,4 +1,4 @@
-import { GameController, SHIPS } from "./modules/gamecontroller.js";
+import { GameController, SHIPS } from "./modules/gameController.js";
 import { Player } from "./modules/player.js";
 import { Ship } from "./modules/ship.js";
 

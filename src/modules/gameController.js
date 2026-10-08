@@ -1,4 +1,3 @@
-import { Player } from "./player.js";
 import { Ship } from "./ship.js";
 
 export const SHIPS = [5, 4, 3, 3, 2];
