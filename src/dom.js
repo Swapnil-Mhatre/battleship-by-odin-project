@@ -206,7 +206,10 @@ function isFleetReady() {
 
 function randomlyPlaceShips(player) {
   controller.randomizeFleet(player.gameboard);
-  if (player.type === "human") render("Ships has been randomized");
+  if (player.type === "human") {
+    render("Ships has been randomized");
+    selectedIndex = player.gameboard.ships.length;
+  }
 }
 
 export function initializeDOM() {
@@ -281,5 +284,3 @@ export function initializeDOM() {
     restartGameBtn.hidden = true;
   });
 }
-
-
